@@ -1,4 +1,5 @@
 import secrets, os
+from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from app.form import LoginForm, RegestrationForm, UpdateAccountForm
 from app.models import User, Post
@@ -59,7 +60,11 @@ def update_image(form_picture):
     _ ,f_ext = os.path.splitext(form_picture.filename)
     new_file_name = random_hex + f_ext
     new_file_path = os.path.join(app.root_path, 'static/profile_pics', new_file_name)
-    form_picture.save(new_file_path)
+    output_size = (125, 125)
+    
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(new_file_path)
 
     return new_file_name
 
