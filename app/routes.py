@@ -10,7 +10,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route('/home')
 def home():
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.paginate(per_page=5, page=page)
+    posts = Post.query.paginate(per_page=2, page=page)
     return render_template('home.html', posts=posts)
 
 @app.route('/about')
