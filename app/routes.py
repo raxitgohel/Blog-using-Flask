@@ -145,7 +145,7 @@ def user_posts(username):
 
 def sendResetEmail(user):
     token = user.get_reset_token()
-    msg = Message('Password Reset Request', sender='noreply@gmail.com', recipients=[user.email])
+    msg = Message('Password Reset Request', sender='reset.password@example.com', recipients=[user.email])
     msg.body = f'''To Reset your Password, visit this link: {url_for('reset_token', token=token, _external=True)}'''
     mail.send(msg)
     
@@ -172,7 +172,7 @@ def reset_token(token):
     form = ResetPasswordForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user.password = hash
+        user.password = hashed_password
         db.session.commit()
         flash(f'Password has been updated!', 'success')
         return redirect(url_for('home'))
