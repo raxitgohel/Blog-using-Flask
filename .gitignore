@@ -1,3 +1,10 @@
 __pycache__/
 env/
 instance/
+app/config_dev.py
+run_dev.py
+challenges_during_migration.txt
+dump_tables.py
+migrate_to_pgsql.py
+post_dump.sql
+user_dump.sql
