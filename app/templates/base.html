@@ -24,23 +24,16 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Flask Blog</a>
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">Flask Blog</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('main.home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" action="{{ url_for('main.search')}}" method="GET">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                    &nbsp;&nbsp;
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -73,8 +66,8 @@
             </div>
             <div class="col-md-4">
                 <div class="content-section">
-                    <h3>Sidebar</h3>
-                    <p class='text-muted'>New info.
+                    <h3>Trending</h3>
+                    <!-- <p class='text-muted'>New info. -->
                     <ul class="list-group">
                         <li class="list-group-item list-group-item-light">Latest Posts</li>
                         <li class="list-group-item list-group-item-light">Announcements</li>
